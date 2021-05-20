@@ -1,5 +1,6 @@
 import React from 'react';
 import ArticleList from '../components/news/ArticleList';
+import Search from '../components/news/Search';
 import { getArticles } from '../services/newsApi';
 
 export default class NewsSearch extends React.Component {
@@ -17,6 +18,26 @@ export default class NewsSearch extends React.Component {
         })
     }
 
+    handleQueryChange = ({ target }) => {
+        this.setState({
+            query: target.value,
+        })
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        this.setState({
+            loading: true,
+        })
+
+        const articles = await getArticles(this.state.query);
+        this.setState({
+            loading: false,
+            articles,
+        })
+    }
+
     render() {
         const { loading, articles, query } = this.state;
 
@@ -24,6 +45,11 @@ export default class NewsSearch extends React.Component {
 
         return (
             <>
+                <Search
+                    query={query}
+                    onQueryChange={this.handleQueryChange}
+                    onSubmit={this.handleSubmit}
+                />
                 <ArticleList articles={articles} />
             </>
         );
