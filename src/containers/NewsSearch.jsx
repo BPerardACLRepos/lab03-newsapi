@@ -41,7 +41,7 @@ export default class NewsSearch extends React.Component {
     render() {
         const { loading, articles, query } = this.state;
 
-        if (loading) <h2>Loading...</h2>;
+        if (loading) return <h2>Loading...</h2>;
 
         return (
             <>
