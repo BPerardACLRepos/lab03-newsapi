@@ -1,9 +1,10 @@
 export const getArticles = async (query) => {
     const res = await fetch(`
     https://newsapi.org/v2/everything?q=${query}&from=2021-04-20&sortBy=publishedAt&apiKey=${process.env.API_KEY}`);
-    const json = res.json();
+    const json = await res.json();
+    const articles = json.articles;
 
-    return json.articles.map(article => ({
+    return articles.map(article => ({
         author: article.author,
         title: article.title,
         description: article.description,

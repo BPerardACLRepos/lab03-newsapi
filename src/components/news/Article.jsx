@@ -6,12 +6,12 @@ const Article = ({ author, title, description, image, link }) => (
         <h2>{title}</h2>
         <h3>{author}</h3>
         <figure>
-            <img src={image} alt={title - author} />
+            <img src={image} alt={title - author} style={{ height: "150px" }} />
             <figcaption>
                 <p>{description}</p>
             </figcaption>
         </figure>
-        <a href={link}>{`View ${link}`}</a>
+        <a href={link}>{`View Content`}</a>
     </>
 );
 

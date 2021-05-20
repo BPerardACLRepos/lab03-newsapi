@@ -5,16 +5,16 @@ import Article from './Article';
 const ArticleList = ({ articles }) => (
     <ul aria-label="articles">
         {articles.map(article => (
-            <li key={author - title}>
+            <li key={article.author - article.link} style={{ border: "solid 1px black" }}>
                 <Article {...article} />
             </li>
         ))}
     </ul>
 );
 
-Articles.propTypes = {
+ArticleList.propTypes = {
     articles: PropTypes.arrayOf(
-        shape({
+        PropTypes.shape({
             author: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             description: PropTypes.string.isRequired,
