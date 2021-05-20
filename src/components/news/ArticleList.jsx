@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Article from './Article';
 
 const ArticleList = ({ articles }) => (
     <ul aria-label="articles">
         {articles.map(article => (
             <li key={author - title}>
-
+                <Article {...article} />
             </li>
         ))}
     </ul>
